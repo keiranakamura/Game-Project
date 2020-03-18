@@ -6,7 +6,7 @@ let me;
 
 
 function setup() {
-  createCanvas(500, 400);
+  createCanvas(500, 500);
 
   //make one avatar called me
   me = new Avatar(width/2, 300, 3);
@@ -14,12 +14,14 @@ function setup() {
 }
 
 function draw(){
-	background(220);
+	background(100,100,250);
+  fill("yellow")
+  ellipse(100,100,100,100)
 
   me.drawMe();
   me.moveMe();
 
-  if (frameCount % 25 == 0) {
+  if (frameCount % 100 == 0) {
       let  b = new Ball(width, random(0,height), -3);
       balls.push(b);
       console.log(balls); //print the balls array to the console
@@ -44,16 +46,16 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("green");
+    		stroke("white");
         strokeWeight(3);
-    		fill("blue");
-		    ellipse(this.x,this.y,20,20);
-        line(this.x,this.y, this.x, this.y+40);
-        line(this.x, this.y+40, this.x-20, this.y+60);
-        line(this.x, this.y+40, this.x+10, this.y+50);
-        line(this.x+10, this.y+50, this.x+5, this.y+60);
-        line(this.x, this.y+15, this.x-10, this.y+25);
-        line(this.x-10, this.y+25, this.x+10, this.y+35);
+    		fill("white");
+		    ellipse(this.x,this.y,40,40);
+        line(this.x,this.y, this.x, this.y+80);
+        line(this.x, this.y+80, this.x-40, this.y+120);
+        line(this.x, this.y+80, this.x+20, this.y+100);
+        line(this.x+20, this.y+100, this.x+10, this.y+120);
+        line(this.x, this.y+30, this.x-20, this.y+50);
+        line(this.x-20, this.y+50, this.x+20, this.y+70);
 	}
 
 	moveMe(){
@@ -85,10 +87,16 @@ class Ball {
 
 	// draw a ball on the screen at x,y
 	drawBall(){
-    	stroke(0);
+    	noStroke();
       strokeWeight(1);
-    	fill("red");
-		  ellipse(this.x,this.y,10,10);
+    	fill(200,150, 150);
+		  ellipse(this.x,this.y,20,18);
+      fill(220, 130, 130)
+      ellipse(this.x+30,this.y,40,15);
+      triangle(this.x+40, this.y+20, this.x+12, this.y-2, this.x+30, this.y-5 )
+      fill("orange")
+      triangle(this.x-10, this.y+2, this.x-22, this.y, this.x-10, this.y-2)
+
 	}
 
 	//update the location of the ball, so it moves across the screen
