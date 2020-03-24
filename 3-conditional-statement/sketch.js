@@ -4,6 +4,13 @@ let balls = [];
 //create a variable to hold your avatar
 let me;
 
+let mySound;
+
+function preload() {
+  soundFormats('mp3', 'ogg');
+  mySound = loadSound('squawk.mp3');
+}
+
 
 function setup() {
   createCanvas(500, 500);
@@ -65,6 +72,14 @@ class Avatar {
 
     if (keyIsDown(DOWN_ARROW)) { // if you hold the down arrow, move down by speed
         this.y += this.speed;
+      }
+        if(keyIsDown(LEFT_ARROW)){
+     this.x -=this.speed;
+   }
+
+   if(keyIsDown(RIGHT_ARROW)){
+     this.x +=this.speed;
+
     }
 	}
 
@@ -109,6 +124,8 @@ class Ball {
   	bounceBall(){
     		if (this.x >= me.x-15 && this.x <= me.x+15 && this.y > me.y-40 && this.y < me.y+40){
       			this.speed = -this.speed;
+            mySound.setVolume(0.1);
+            mySound.play();
     		}
   	}
 
